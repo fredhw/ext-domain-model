@@ -9,27 +9,27 @@
 import XCTest
 
 class ExtensionTest: XCTestCase {
-
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testUSD() {
+        let tenUSD = 10.USD
+        XCTAssert(tenUSD.amount == 10.0)
+        XCTAssert(tenUSD.currency == "USD")
+    }
+    func testCAN() {
+        let tenCAN = 10.CAN
+        XCTAssert(tenCAN.amount == 10.0)
+        XCTAssert(tenCAN.currency == "CAN")
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+    func testEUR() {
+        let twoEUR = 2.0.EUR
+        XCTAssert(twoEUR.amount == 2.0)
+        XCTAssert(twoEUR.currency == "EUR")
     }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testGBP() {
+        let fiveGBP = 10.USD.convert("GBP")
+        XCTAssert(fiveGBP.amount == 5.0)
+        XCTAssert(fiveGBP.currency == "GBP")
+        
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

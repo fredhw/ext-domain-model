@@ -23,37 +23,79 @@ protocol CustomStringConvertible {
     var description : String { get }
 }
 
+protocol Mathematics {
+    func +(left: Money, right: Money) -> Money
+    func -(left: Money, right: Money) -> Money
+}
+
+func +(left: Money, right: Money) {
+    return left.add(right)
+}
+
+func -(left: Money, right: Money) {
+    return left.subtract(right)
+}
+
+
 ////////////////////////////////////
 // Money
 //
-public struct Money {
-    public var amount : Int
+public struct Money : CustomStringConvertible, Mathematics {
+    public var amount : Double
     public var currency : String
     public var description : String {
         return "\(currency)\(amount)"
+    }
+    
+    init (amount: Double, currency: String) {
+        self.currency = currency
+        self.amount = amount
     }
     
     let rates = ["USD": 1, "GBP": 0.5, "EUR": 1.5, "CAN": 1.25]
     
     public func convert(_ to: String) -> Money {
         let rate = rates[to]! / rates[self.currency]!
-        return Money(amount: Int(rate * Double(self.amount)) , currency: to)
+        return Money(amount: rate * self.amount , currency: to)
     }
     
-    public func add(_ to: Money) -> Money {
+    public func add(to: Money) -> Money {
         return Money(amount: self.convert(to.currency).amount + to.amount, currency: to.currency)
     }
-    public func subtract(_ from: Money) -> Money {
+    public func subtract(from: Money) -> Money {
         return Money(amount: from.amount - self.convert(from.currency).amount , currency: from.currency)
+    }
+}
+
+extension Double {
+    var USD : Money {
+        return Money(amount: self, currency: "USD")
+    }
+    var GBP : Money {
+        return Money(amount: self, currency: "GBP")
+    }
+    var EUR : Money {
+        return Money(amount: self, currency: "EUR")
+    }
+    var CAN : Money {
+        return Money(amount: self, currency: "CAN")
     }
 }
 
 ////////////////////////////////////
 // Job
 //
-open class Job {
+open class Job : CustomStringConvertible {
     fileprivate var title : String
     fileprivate var type : JobType
+    public var description: String {
+        switch type {
+        case let .Hourly(rate):
+            return "Title: \(title), salary: \(rate) per hour"
+        case let .Salary(annual):
+            return "Title: \(title), salary: \(annual) per year"
+        }
+    }
     
     public enum JobType {
         case Hourly(Double)
@@ -85,10 +127,14 @@ open class Job {
 ////////////////////////////////////
 // Person
 //
-open class Person {
+open class Person : CustomStringConvertible {
     open var firstName : String = ""
     open var lastName : String = ""
     open var age : Int = 0
+    public var description: String {
+        return self.toString()
+    }
+    
     
     fileprivate var _job : Job? = nil
     open var job : Job? {
@@ -130,8 +176,15 @@ open class Person {
 ////////////////////////////////////
 // Family
 //
-open class Family {
+open class Family : CustomStringConvertible {
     fileprivate var members : [Person] = []
+    public var description: String {
+        var str = ""
+        for member in members {
+            str += member.firstName
+        }
+        return str
+    }
     
     public init(spouse1: Person, spouse2: Person) {
         if spouse1.spouse == nil && spouse2.spouse == nil {

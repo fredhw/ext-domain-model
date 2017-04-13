@@ -358,6 +358,7 @@
 				9DF8B8C21EA019D600522DA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9DF8B8CC1EA01A5900522DA5 /* Build configuration list for PBXNativeTarget "ExtDomainModelTests" */ = {
 			isa = XCConfigurationList;
@@ -366,6 +367,7 @@
 				9DF8B8CE1EA01A5900522DA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
