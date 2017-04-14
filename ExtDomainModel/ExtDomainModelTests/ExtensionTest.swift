@@ -10,26 +10,26 @@ import XCTest
 
 class ExtensionTest: XCTestCase {
     func testUSD() {
-        let tenUSD = 10.USD
-        XCTAssert(tenUSD.amount == 10.0)
-        XCTAssert(tenUSD.currency == "USD")
+        let usd = 10.USD
+        XCTAssert(usd.amount == 10.0)
+        XCTAssert(usd.currency == "USD")
     }
     func testCAN() {
-        let tenCAN = 10.CAN
-        XCTAssert(tenCAN.amount == 10.0)
-        XCTAssert(tenCAN.currency == "CAN")
+        let can = 5.CAN
+        XCTAssert(can.amount == 5.0)
+        XCTAssert(can.currency == "CAN")
     }
     
     func testEUR() {
-        let twoEUR = 2.0.EUR
-        XCTAssert(twoEUR.amount == 2.0)
-        XCTAssert(twoEUR.currency == "EUR")
+        let eur = 2.0.EUR
+        XCTAssert(eur.amount == 2)
+        XCTAssert(eur.currency == "EUR")
     }
     
     func testGBP() {
-        let fiveGBP = 10.USD.convert("GBP")
-        XCTAssert(fiveGBP.amount == 5.0)
-        XCTAssert(fiveGBP.currency == "GBP")
+        let gbp = 10.USD.convert("GBP")
+        XCTAssert(gbp.amount == 5.0)
+        XCTAssert(gbp.currency == "GBP")
         
     }
 }

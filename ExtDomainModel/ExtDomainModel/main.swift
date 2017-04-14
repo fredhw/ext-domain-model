@@ -24,18 +24,9 @@ protocol CustomStringConvertible {
 }
 
 protocol Mathematics {
-    func +(left: Money, right: Money) -> Money
-    func -(left: Money, right: Money) -> Money
+    func add(to: Money) -> Money
+    func subtract(from : Money) -> Money
 }
-
-func +(left: Money, right: Money) {
-    return left.add(right)
-}
-
-func -(left: Money, right: Money) {
-    return left.subtract(right)
-}
-
 
 ////////////////////////////////////
 // Money
@@ -132,7 +123,20 @@ open class Person : CustomStringConvertible {
     open var lastName : String = ""
     open var age : Int = 0
     public var description: String {
-        return self.toString()
+        var str = "firstName:\(self.firstName) lastName:\(self.lastName) age:\(self.age)"
+            
+        if let job = self.job?.title {
+            str += (" job:\(job)")
+        } else {
+            str += (" job:nil")
+        }
+            
+        if let spouse = spouse {
+            str += (" spouse:\(spouse.firstName) \(spouse.lastName)")
+        } else {
+            str += (" spouse:nil")
+        }
+        return str
     }
     
     
@@ -179,9 +183,9 @@ open class Person : CustomStringConvertible {
 open class Family : CustomStringConvertible {
     fileprivate var members : [Person] = []
     public var description: String {
-        var str = ""
+        var str = "Members of family:"
         for member in members {
-            str += member.firstName
+            str += " " + member.firstName
         }
         return str
     }

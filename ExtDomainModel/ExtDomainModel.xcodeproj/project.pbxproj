@@ -12,6 +12,7 @@
 		9DF8B8D11EA01B2300522DA5 /* CustomStringConvertibleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF8B8CF1EA01B2300522DA5 /* CustomStringConvertibleTest.swift */; };
 		9DF8B8D31EA01B9800522DA5 /* MathematicsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF8B8D21EA01B9800522DA5 /* MathematicsTest.swift */; };
 		9DF8B8D51EA01BB200522DA5 /* ExtensionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF8B8D41EA01BB200522DA5 /* ExtensionTest.swift */; };
+		9DF8B8D61EA05FD700522DA5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF8B8BC1EA019D600522DA5 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -194,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DF8B8CA1EA01A5900522DA5 /* ExtDomainModelTests.swift in Sources */,
+				9DF8B8D61EA05FD700522DA5 /* main.swift in Sources */,
 				9DF8B8D31EA01B9800522DA5 /* MathematicsTest.swift in Sources */,
 				9DF8B8D11EA01B2300522DA5 /* CustomStringConvertibleTest.swift in Sources */,
 				9DF8B8D51EA01BB200522DA5 /* ExtensionTest.swift in Sources */,
